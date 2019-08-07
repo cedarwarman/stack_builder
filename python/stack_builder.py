@@ -117,9 +117,11 @@ The main function
 
 
 def main():
+    print("\n ...starting\n")
     file_list = list_files(args.input_image_directory)
     input_ranges = process_input_ranges(args.image_ranges)
     make_stacks(args.input_image_directory, file_list, input_ranges)
+    print("\n...finished")
 
 
 if __name__ == "__main__":
