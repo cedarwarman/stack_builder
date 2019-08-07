@@ -43,6 +43,7 @@ def list_files(input_directory):
     file_list = []
     for file in glob.glob(input_dir_string):
         file_list.append(file)
+    file_list.sort()
     return file_list
 
 
