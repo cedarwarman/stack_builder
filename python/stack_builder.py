@@ -8,7 +8,10 @@
 ==============================================================================
 
 This script is built to speed the process of making FIJI (ImageJ) stacks for
-pollen microscopy experiments.
+pollen microscopy experiments. It takes a folder containing a series of
+sequentially numbered tif images and outputs user-defined stacks. Make sure the
+tif images start with 1, but otherwise there's no requirements (as far as I
+know).
 """
 
 import os
@@ -85,8 +88,11 @@ Make stacks function
 
 
 def make_stacks(input_image_directory, file_list, input_ranges):
+    # Getting the short name of the directory (should usually be a date)
+    short_dir_name = os.path.basename(os.path.normpath(input_image_directory))
+
     # Making a directory for the stack output inside of the input directory
-    directory_path = input_image_directory + 'stacks/'
+    directory_path = input_image_directory + short_dir_name + '_stacks/'
     try:
         os.mkdir(directory_path)
     except OSError:
@@ -104,7 +110,8 @@ def make_stacks(input_image_directory, file_list, input_ranges):
         trial_images = tiff.imread(files_in_trial)
 
         # Writing out the images in a stack
-        tiff.imwrite(input_image_directory + 'stacks/' + trial_name + ".tif", trial_images)
+        tiff.imwrite(input_image_directory + short_dir_name + '_stacks/' +
+                     short_dir_name + '_' + trial_name + ".tif", trial_images)
         print("...stack write complete\n")
 
 
