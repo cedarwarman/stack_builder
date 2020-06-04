@@ -27,7 +27,7 @@ Setting up the arguments
 
 parser = argparse.ArgumentParser(description="Given some images and a series of ranges, build stacks")
 
-parser.add_argument('-i', '--input_image_directory', type=str, help="Path to directory for input images.")
+parser.add_argument('-i', '--input_image_directory', type=str, help="Path to directory for input images.") # Note: needs trailing forward slash
 parser.add_argument('-r', '--image_ranges', type=str, help=("Series of ranges for stacks, as well as names "
                                                             "of the stacks. Format: "
                                                             "A 1:32 B 33:47..."))
